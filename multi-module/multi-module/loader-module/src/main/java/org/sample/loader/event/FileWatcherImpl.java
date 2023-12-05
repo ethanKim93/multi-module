@@ -1,7 +1,8 @@
 package org.sample.loader.event;
 
 
-import lombok.RequiredArgsConstructor;
+import org.sample.loader.event.port.FileWatcher;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -9,21 +10,25 @@ import java.util.List;
 import java.nio.file.WatchEvent.Kind;
 
 //@RequiredArgsConstructor
-public class FileWatcher {
+@Service
+public class FileWatcherImpl implements FileWatcher {
     private WatchService watchService;
-    private String filePath;
+    //    private String filePath;
+    private Path path;
 
     public void create(String filePath) throws IOException {
         watchService = FileSystems.getDefault().newWatchService();
-        this.filePath = filePath;
-    }
+        path = Paths.get(filePath);
 
-    public void run() throws IOException, InterruptedException {
-        Path path = Paths.get(filePath);
         path.register(watchService,
                 StandardWatchEventKinds.ENTRY_CREATE,
                 StandardWatchEventKinds.ENTRY_DELETE,
                 StandardWatchEventKinds.ENTRY_MODIFY);
+
+    }
+
+    public void run() throws IOException, InterruptedException {
+
         while (true) {
             WatchKey key = watchService.take();
             List<WatchEvent<?>> list = key.pollEvents(); //이벤트를 받을 때까지 대기
