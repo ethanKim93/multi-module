@@ -1,7 +1,10 @@
 package org.sample;
 
+import org.springframework.boot.SpringApplication;
+
 public class CoreModuleApplication {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        SpringApplication.run(CoreModuleApplication.class, args);
     }
 }

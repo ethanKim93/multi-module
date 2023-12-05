@@ -1,4 +1,4 @@
-package org.sample.panel.domain;
+package org.sample.application.domain.model;
 
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -9,18 +9,24 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class Panel {
 
-    private long panelId;
-    private String name;
+    private String panelId;
+    private long scanIndex;
+    private String equipType;
+
+    private String operator;
+
+
     private LocalDateTime updateDateTime;
     private LocalDateTime createDateTime;
 
     @Builder
-    public Panel(long panelId, String name) {
+    public Panel(String panelId, String equipType, long scanIndex) {
         this.panelId = panelId;
-        this.name = name;
+        this.equipType = equipType;
+        this.scanIndex = scanIndex;
     }
 
     public void updateOperator(String name) {
-        this.name = name;
+        this.operator = name;
     }
 }

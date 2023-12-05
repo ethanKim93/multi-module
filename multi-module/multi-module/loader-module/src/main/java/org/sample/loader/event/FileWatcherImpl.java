@@ -16,21 +16,34 @@ public class FileWatcherImpl implements FileWatcher {
     //    private String filePath;
     private Path path;
 
-    public void create(String filePath) throws IOException {
-        watchService = FileSystems.getDefault().newWatchService();
+    public void create(String filePath) {
+        try {
+            watchService = FileSystems.getDefault().newWatchService();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         path = Paths.get(filePath);
 
-        path.register(watchService,
-                StandardWatchEventKinds.ENTRY_CREATE,
-                StandardWatchEventKinds.ENTRY_DELETE,
-                StandardWatchEventKinds.ENTRY_MODIFY);
+        try {
+            path.register(watchService,
+                    StandardWatchEventKinds.ENTRY_CREATE,
+                    StandardWatchEventKinds.ENTRY_DELETE,
+                    StandardWatchEventKinds.ENTRY_MODIFY);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
-    public void run() throws IOException, InterruptedException {
+    public void run() {
 
         while (true) {
-            WatchKey key = watchService.take();
+            WatchKey key = null;
+            try {
+                key = watchService.take();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             List<WatchEvent<?>> list = key.pollEvents(); //이벤트를 받을 때까지 대기
             for (WatchEvent<?> event : list) {
 
@@ -52,7 +65,11 @@ public class FileWatcherImpl implements FileWatcher {
             }
             if (!key.reset()) break; //키 리셋
         }
-        watchService.close();
+        try {
+            watchService.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

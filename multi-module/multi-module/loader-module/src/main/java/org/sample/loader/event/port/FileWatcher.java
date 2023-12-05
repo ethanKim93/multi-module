@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public interface FileWatcher {
 
-    public void create(String filePath) throws IOException;
+    public void create(String filePath);
 
-    public void run() throws IOException, InterruptedException;
+    public void run();
 
 }
