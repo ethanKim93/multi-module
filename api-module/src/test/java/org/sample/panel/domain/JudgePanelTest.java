@@ -2,6 +2,8 @@ package org.sample.panel.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.sample.common.service.port.ClockHolder;
+import org.sample.mock.TestClockHolder;
 import org.sample.panel.domain.model.JudgePanel;
 
 import java.time.LocalDateTime;
@@ -19,7 +21,8 @@ public class JudgePanelTest {
                 .scanIndex(1).judgeCode("NG").build();
         //when
         LocalDateTime nowTime = LocalDateTime.now();
-        judgePanel.startJudge("홍길동", nowTime);
+        ClockHolder clockHolder = new TestClockHolder(nowTime);
+        judgePanel.startJudge("홍길동", clockHolder);
         //then
         assertThat(judgePanel.getOperator()).isEqualTo("홍길동");
         assertThat(judgePanel.getStartTime()).isEqualTo(nowTime);

@@ -50,8 +50,8 @@ public class JudgePanel {
     }
 
 
-    public void startJudge(String operator, LocalDateTime nowTime) {
-        startTime = nowTime;
+    public void startJudge(String operator, ClockHolder clockHolder) {
+        startTime = clockHolder.nowTime();
         this.operator = operator;
     }
 
@@ -60,8 +60,8 @@ public class JudgePanel {
         this.operator = operator;
     }
 
-    public void endJudge(String operator, LocalDateTime nowTime) {
-        judgeTime = nowTime;
+    public void endJudge(String operator, ClockHolder clockHolder) {
+        judgeTime = clockHolder.nowTime();
         this.operator = operator;
     }
 

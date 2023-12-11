@@ -25,7 +25,7 @@ public class JudgeService implements JudgeUseCase {
         JudgePanel judgePanel = judgePort.findJudgePanelById(startJudgeDto.getScanIndex())
                 .orElseThrow(() -> new CustomApiException(ErrorMessage.NOT_FOUND_PANEL));
 
-        judgePanel.startJudge(startJudgeDto.getOperator(), clockHolder.nowTime());
+        judgePanel.startJudge(startJudgeDto.getOperator(), clockHolder);
 
         judgePort.saveJudgePaenl(judgePanel);
         return true;
@@ -37,7 +37,7 @@ public class JudgeService implements JudgeUseCase {
         JudgePanel judgePanel = judgePort.findJudgePanelById(endJudgeDto.getScanIndex())
                 .orElseThrow(() -> new CustomApiException(ErrorMessage.NOT_FOUND_PANEL));
 
-        judgePanel.endJudge(endJudgeDto.getOperator(), clockHolder.nowTime());
+        judgePanel.endJudge(endJudgeDto.getOperator(), clockHolder);
 
         judgePort.saveJudgePaenl(judgePanel);
         return false;
