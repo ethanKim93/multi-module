@@ -11,9 +11,9 @@ public class OpenApiConfig {
     @Bean
     public OpenAPI openAPI() {
         Info info = new Info()
-                .title("ICS API Document")
+                .title("API Document")
                 .version("v0.0.1")
-                .description("ICS 프로젝트 API 명세서");
+                .description("API 명세서");
         return new OpenAPI()
                 .components(new Components())
                 .info(info);
