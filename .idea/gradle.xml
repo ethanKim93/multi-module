@@ -1,34 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/api-module" />
-        <option name="gradleHome" value="" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="delegatedBuild" value="false" />
+        <option name="testRunner" value="PLATFORM" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="openjdk-21" />
         <option name="modules">
           <set>
+            <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/api-module" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/batch-module" />
-        <option name="gradleHome" value="" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
-        <option name="modules">
-          <set>
             <option value="$PROJECT_DIR$/batch-module" />
-          </set>
-        </option>
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/core-module" />
-        <option name="gradleHome" value="" />
-        <option name="gradleJvm" value="#JAVA_HOME" />
-        <option name="modules">
-          <set>
             <option value="$PROJECT_DIR$/core-module" />
+            <option value="$PROJECT_DIR$/loader-module" />
           </set>
         </option>
       </GradleProjectSettings>

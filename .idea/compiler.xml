@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel>
-      <module name="api-module" target="11" />
-      <module name="api-module.main" target="11" />
-      <module name="api-module.test" target="11" />
-      <module name="batch-module" target="11" />
-      <module name="batch-module.main" target="11" />
-      <module name="batch-module.test" target="11" />
-      <module name="core-module" target="11" />
-      <module name="core-module.main" target="11" />
-      <module name="core-module.test" target="11" />
-    </bytecodeTargetLevel>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.2.0/c118a8d5f464983d7298b0f849cb9278f08d1f1e/spring-boot-configuration-processor-3.2.0.jar" />
+        </processorPath>
+        <module name="multi-module.core-module.main" />
+        <module name="multi-module.loader-module.main" />
+        <module name="multi-module.batch-module.main" />
+        <module name="multi-module.api-module.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="multi-module.loader-module.test" />
+        <module name="multi-module.api-module.test" />
+        <module name="multi-module.batch-module.test" />
+        <module name="multi-module.core-module.test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="21" />
   </component>
 </project>
