@@ -1,12 +1,14 @@
-package com.fastcampus.hellospringbatch.config.file;
+package org.sample.config.file;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.FlatFileItemWriter;
@@ -18,6 +20,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.WritableResource;
+
+import org.springframework.jdbc.support.JdbcTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import java.math.BigDecimal;
 
@@ -27,30 +33,30 @@ import java.math.BigDecimal;
 public class FileBatchJobConfiguration {
     public static final int CHUNK_SIZE = 2;
     public static final int ADD_PRICE = 1000;
-    private final JobBuilderFactory jobBuilderFactory;
-    private final StepBuilderFactory stepBuilderFactory;
+
     private static final String JOB_NAME = "fileJob";
     private static final String STEP_NAME = "fileStep";
 
-    private Resource inputFileResource = new FileSystemResource("input/sample-product.csv");
-    private Resource outputFileResource = new FileSystemResource("output/output-product.csv");
+    private Resource inputFileResource = new FileSystemResource("batch-module/input/sample-product.csv");
+    private WritableResource outputFileResource = new FileSystemResource("batch-module/output/output-product.csv");
 
     @Bean
-    public Job fileJob() {
-        return this.jobBuilderFactory.get(JOB_NAME)
+    public Job fileJob(JobRepository jobRepository, JdbcTransactionManager transactionManager) {
+        return new JobBuilder(JOB_NAME, jobRepository)
                 .incrementer(new RunIdIncrementer())
-                .start(fileStep())
+                .start(fileStep(jobRepository, transactionManager))
                 .build();
     }
 
     @Bean
-    public Step fileStep() {
-        return this.stepBuilderFactory.get(STEP_NAME)
-                .<Product, Product>chunk(CHUNK_SIZE)
+    public Step fileStep(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder(STEP_NAME, jobRepository)
+                .<Product, Product>chunk(CHUNK_SIZE, transactionManager)
                 .reader(fileItemReader())
                 .processor(fileItemProcessor())
                 .writer(fileItemWriter())
                 .build();
+
     }
 
     @Bean

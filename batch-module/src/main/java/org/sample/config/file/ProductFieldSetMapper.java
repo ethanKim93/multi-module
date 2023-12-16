@@ -1,4 +1,4 @@
-package com.fastcampus.hellospringbatch.config.file;
+package org.sample.config.file;
 
 import org.springframework.batch.item.file.mapping.FieldSetMapper;
 import org.springframework.batch.item.file.transform.FieldSet;

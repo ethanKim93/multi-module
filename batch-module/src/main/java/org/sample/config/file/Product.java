@@ -1,4 +1,4 @@
-package com.fastcampus.hellospringbatch.config.file;
+package org.sample.config.file;
 
 import lombok.Data;
 

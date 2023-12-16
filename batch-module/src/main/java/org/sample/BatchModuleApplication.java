@@ -1,5 +1,6 @@
 package org.sample;
 
+import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,6 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BatchModuleApplication {
     public static void main(String[] args) {
 
-        SpringApplication.run(BatchModuleApplication.class, args);
+        System.exit(
+                SpringApplication.exit(
+                        SpringApplication.run(BatchModuleApplication.class, args)
+                )
+        );
     }
 }
