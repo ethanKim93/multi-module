@@ -13,6 +13,7 @@
         <module name="multi-module.loader-module.main" />
         <module name="multi-module.batch-module.main" />
         <module name="multi-module.api-module.main" />
+        <module name="multi-module.schedular-module.main" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -23,6 +24,7 @@
         <module name="multi-module.api-module.test" />
         <module name="multi-module.batch-module.test" />
         <module name="multi-module.core-module.test" />
+        <module name="multi-module.schedular-module.test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="21" />

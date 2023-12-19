@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/batch-module" />
             <option value="$PROJECT_DIR$/core-module" />
             <option value="$PROJECT_DIR$/loader-module" />
+            <option value="$PROJECT_DIR$/schedular-module" />
           </set>
         </option>
       </GradleProjectSettings>

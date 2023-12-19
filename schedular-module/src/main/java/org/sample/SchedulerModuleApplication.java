@@ -3,11 +3,11 @@ package org.sample;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
-public class ApiModuleApplication {
+@EnableScheduling
+public class SchedulerModuleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ApiModuleApplication.class, args);
+        SpringApplication.run(SchedulerModuleApplication.class, args);
     }
 }

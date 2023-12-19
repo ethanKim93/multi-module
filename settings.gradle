@@ -3,4 +3,5 @@ include 'api-module'
 include 'batch-module'
 include 'core-module'
 include 'loader-module'
+include 'schedular-module'
 
