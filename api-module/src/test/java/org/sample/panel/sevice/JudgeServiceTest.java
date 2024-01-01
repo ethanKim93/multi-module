@@ -1,6 +1,6 @@
 package org.sample.panel.sevice;
 
-import org.sample.panel.domain.model.JudgePanel;
+import org.sample.domain.panel.domain.model.JudgePanel;
 
 public class JudgeServiceTest {
     JudgePanel judgePanel = JudgePanel.builder()

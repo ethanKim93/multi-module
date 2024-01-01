@@ -42,6 +42,7 @@ public class HelloBatchJobConfiguration {
     public Job job(JobRepository jobRepository, JdbcTransactionManager transactionManager) {
         return new JobBuilder(JOB_NAME, jobRepository)
                 .start(step(jobRepository, transactionManager))
+                .next(step(jobRepository, transactionManager))
                 .build();
     }
 

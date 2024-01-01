@@ -27,6 +27,6 @@
         <module name="multi-module.schedular-module.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="21" />
+    <bytecodeTargetLevel target="19" />
   </component>
 </project>
