@@ -14,3 +14,18 @@ spring:
       url: jdbc:h2:mem:test;Mode=Oracle
       username: sa
       password:
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  task:
+    execution:
+      pool:
+        core-size: 5
+        max-size: 10
+        queue-capacity: 500
+      thread-name-prefix: watcher-task-
+

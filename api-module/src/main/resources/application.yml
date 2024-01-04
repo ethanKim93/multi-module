@@ -14,7 +14,7 @@ spring:
       url: jdbc:h2:mem:test;Mode=Oracle
       username: sa
       password:
-
+  
 springdoc:
   packages-to-scan: org.sample
   default-consumes-media-type: application/json;charset=UTF-8
